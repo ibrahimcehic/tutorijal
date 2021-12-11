@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "opis": "Ocistiti sobu",
+        "datumZavrsetka": "22.12.2021",
+        "status": false
+    },
+    {
+        "id": 2,
+        "opis": "Gledati utakmicu",
+        "datumZavrsetka": "18.12.2021",
+        "status": false
+    },
+    {
+        "id": 3,
+        "opis": "Uraditi zadacu iz matematike",
+        "datumZavrsetka": "18.12.2021",
+        "status": false
+    }
+]

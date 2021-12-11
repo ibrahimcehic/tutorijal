@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="row pt-2 pb-3">
+            <div class="col-6 ps-0" >
+                ToDo Task
+            </div>
+            <div class="col-6 text-end pe-0">
+                <button type="button" class="btn btn-labeled btn-info"><i class="fa fa-plus pe-2"></i>Dodaj</button>
+            </div>
+        </div>
+    </div>
+
+<div>
+
+</div>
+<div>
+    <table class="table" *ngIf="tasks.length">
+        <thead>
+            <th>Id</th>
+            <th>Opis</th>
+            <th>Datum zavrsetka</th>
+            <th>Status</th>
+            <th class="text-end">Obrisi</th>
+        </thead>
+        <tbody >
+            <tr *ngFor = "let task of tasks">
+                <td>{{task.id}}</td>
+                <td>{{task.opis}}</td>
+                <td>{{task.datumZavrsetka}}</td>
+                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                <td class="text-end"><button type="button" class="btn btn-labeled btn-danger"><i class="fa fa-trash"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
