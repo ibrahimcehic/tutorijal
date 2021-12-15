@@ -5,7 +5,7 @@
                 ToDo Task
             </div>
             <div class="col-6 text-end pe-0">
-                <button type="button" class="btn btn-labeled btn-info"><i class="fa fa-plus pe-2"></i>Dodaj</button>
+                <button type="button" class="btn btn-primary" (click)="add(modal)"><i class="fa fa-plus pe-2"></i> Dodaj </button>
             </div>
         </div>
     </div>
@@ -24,13 +24,73 @@
         </thead>
         <tbody >
             <tr *ngFor = "let task of tasks">
-                <td>{{task.id}}</td>
-                <td>{{task.opis}}</td>
-                <td>{{task.datumZavrsetka}}</td>
-                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                <td class="text-end"><button type="button" class="btn btn-labeled btn-danger"><i class="fa fa-trash"></i></button></td>
+               
+                    <td>{{task.id}}</td>
+                    <td>{{task.opis}}</td>
+                    <td>{{task.datumZavrsetka}}</td>
+                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="task.status" (click) = "statusUpdate(task.id)"></td>
+                    <td class="text-end"><button type="button" class="btn btn-labeled btn-danger" (click)="delete(task.id,modal2)"><i class="fa fa-trash"></i></button></td>
             </tr>
         </tbody>
     </table>
 </div>
+</div>
+
+<!--Modal- dodaj -->
+<div #modal class="modal fade" tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="task">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>
+                        <input type="text" [(ngModel)] = "task.id">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Opis</td>
+                    <td>
+                        <input type="text" [(ngModel)] = "task.opis">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Datum Zavrsetka</td>
+                    <td>
+                        <input type="date" [(ngModel)] = "task.datumZavrsetka">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)= "saveNew(task)" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+   </div>
+</div>
+
+<!--Modal- Alert -->
+<div #modal2 class="modal fade" tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Task nije zavrsen. Da li ste sigurni da ga zelite obrisati?
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)= "deleteAlert()" data-bs-dismiss="modal">Obrisi</button>
+        </div>
+      </div>
+   </div>
 </div>

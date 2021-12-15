@@ -2,19 +2,19 @@
     {
         "id": 1,
         "opis": "Ocistiti sobu",
-        "datumZavrsetka": "22.12.2021",
+        "datumZavrsetka": "2021-12-18",
         "status": false
     },
     {
         "id": 2,
         "opis": "Gledati utakmicu",
-        "datumZavrsetka": "18.12.2021",
-        "status": false
+        "datumZavrsetka": "2021-12-17",
+        "status": true
     },
     {
         "id": 3,
         "opis": "Uraditi zadacu iz matematike",
-        "datumZavrsetka": "18.12.2021",
+        "datumZavrsetka": "2022-01-05",
         "status": false
     }
 ]
