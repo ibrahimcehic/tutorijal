@@ -23,7 +23,7 @@
             <th class="text-end">Obrisi</th>
         </thead>
         <tbody >
-            <tr *ngFor = "let task of tasks">
+            <tr *ngFor = "let task of tasks" [ngStyle]="{'background-color':provjeraVremena(task.datumZavrsetka, task.status)}">
                
                     <td>{{task.id}}</td>
                     <td>{{task.opis}}</td>

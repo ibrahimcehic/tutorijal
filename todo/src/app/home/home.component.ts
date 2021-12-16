@@ -67,17 +67,25 @@ statusUpdate(id: number)
   let index = this.tasks.findIndex(idS => idS.id == id );
   this.tasks[index].status = !this.tasks[index].status;
   this.zavrsen = this.tasks[index].status;
-  console.log('check box change');
-  console.log(this.date1.getTime());
+  //console.log('check box change');
+  //console.log(this.date1.getTime());
   
 }
-provjeraVremena(datum: Date): string
+provjeraVremena(datum: Date, zavrsen:boolean)
 {
+  const vrijemeZ = new Date(datum);
+  const vrijeme= new Date();
+  let vrijemeE = new Date();
+  vrijemeE.setTime(86400000);
+console.log('Status: ', zavrsen);
 
-  if(datum.getTime()>this.date1.getTime() + 86400000)
- {
-
- }
- return 'white';
+   if(((vrijemeZ.getTime() - vrijeme.getTime())< vrijemeE.getTime()) && zavrsen == false)
+  {
+    return 'red';
+   }
+    else{
+    return 'white';
+    }  
+  
 }
 }

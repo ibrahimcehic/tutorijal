@@ -16,5 +16,11 @@
         "opis": "Uraditi zadacu iz matematike",
         "datumZavrsetka": "2022-01-05",
         "status": false
+    },
+    {
+        "id": 4,
+        "opis": "Sastanak",
+        "datumZavrsetka": "2021-12-17",
+        "status": false
     }
 ]
