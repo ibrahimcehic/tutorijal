@@ -20,7 +20,7 @@
             <th>Opis</th>
             <th>Datum zavrsetka</th>
             <th>Status</th>
-            <th class="text-end">Obrisi</th>
+            <th class="text-end">Opcije</th>
         </thead>
         <tbody >
             <tr *ngFor = "let task of tasks" [ngStyle]="{'background-color':provjeraVremena(task.datumZavrsetka, task.status)}">
@@ -29,7 +29,10 @@
                     <td>{{task.opis}}</td>
                     <td>{{task.datumZavrsetka}}</td>
                     <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="task.status" (click) = "statusUpdate(task.id)"></td>
-                    <td class="text-end"><button type="button" class="btn btn-labeled btn-danger" (click)="delete(task.id,modal2)"><i class="fa fa-trash"></i></button></td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-info me-md-2" (click)="delete(task.id,modal2)"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info" (click)="update(task,modal)"><i class="fa fa-edit ">Edit</i></button>
+                    </td>
             </tr>
         </tbody>
     </table>
@@ -69,7 +72,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)= "saveNew(task)" data-bs-dismiss="modal">Save changes</button>
+          <button type="button" class="btn btn-primary" *ngIf = "type == 'edit'" (click)= "saveEdit()" data-bs-dismiss="modal">Izmjeni</button>
+          <button type="button" class="btn btn-primary" *ngIf = "type == 'add'" (click)= "saveNew(task)" data-bs-dismiss="modal">Dodaj</button>
         </div>
       </div>
    </div>

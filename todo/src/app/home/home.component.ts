@@ -17,7 +17,10 @@ export class HomeComponent implements OnInit
   zavrsen: boolean = false;
   date1: Date = new Date();
   alertBoja: string = '';
-  indexDelete: number = 0;;
+  indexDelete: number = 0;
+  type: string = '';
+   
+  indPom: number = 0;
 
   constructor(private service: TaskService ) { }
 
@@ -29,13 +32,14 @@ export class HomeComponent implements OnInit
 add(modalElement: any)
 {
    this.task = {
-     id: 0,
+     id: Math.round(Math.random()*10000),
      opis: '',
      datumZavrsetka: '',
      status:false
     }
-  const modal = new Modal(modalElement);
-  modal.show();
+    this.type = 'add';
+    const modal = new Modal(modalElement);
+    modal.show();
 }
 saveNew(task: ITask)
 {
@@ -77,7 +81,7 @@ provjeraVremena(datum: Date, zavrsen:boolean)
   const vrijeme= new Date();
   let vrijemeE = new Date();
   vrijemeE.setTime(86400000);
-console.log('Status: ', zavrsen);
+    //console.log('Status: ', zavrsen);
 
    if(((vrijemeZ.getTime() - vrijeme.getTime())< vrijemeE.getTime()) && zavrsen == false)
   {
@@ -87,5 +91,34 @@ console.log('Status: ', zavrsen);
     return 'white';
     }  
   
+}
+update(task: ITask, modalElement: any){
+  this.task = {
+    id: task.id,
+    opis: task.opis,
+    datumZavrsetka: task.datumZavrsetka,
+    status: task.status,
+  }
+
+  let index = this.tasks.findIndex(idS => idS.id == task.id );
+  this.indPom = index;
+  console.log('Index: ', this.indPom);
+  
+  this.type = 'edit';
+  const modal = new Modal(modalElement);
+  modal.show();
+}
+saveEdit(){
+// let index = this.task.findIndex(element => element.id == this.task.id);
+//   this.task[index] = this.task;  
+
+console.log(this.task.id)
+console.log(this.tasks)
+
+this.tasks = this.tasks.filter(e => e.id !== this.task.id )
+this.tasks.push(this.task)
+
+this.tasks.sort((a,b) => a.id - b.id)
+
 }
 }
